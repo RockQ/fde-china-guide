@@ -1,0 +1,19 @@
+---
+title: "国产FDE修炼之道：前线实战手册"
+subtitle: "中国工程师的前线部署工程师完全指南"
+author: "AI办公前线"
+date: "2026"
+lang: zh-CN
+documentclass: ctexbook
+CJKmainfont: "Noto Serif CJK SC"
+CJKsansfont: "Noto Sans CJK SC"
+mainfont: "Noto Serif CJK SC"
+fontsize: 11pt
+geometry: "margin=2.5cm, top=3cm, bottom=3cm"
+toc: true
+toc-depth: 2
+numbersections: true
+colorlinks: true
+linkcolor: "blue"
+urlcolor: "blue"
+...

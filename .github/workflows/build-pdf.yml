@@ -1,0 +1,48 @@
+name: Build and Release PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.md'
+      - 'metadata.yaml'
+      - 'Makefile'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq \
+            pandoc \
+            texlive-xetex \
+            texlive-lang-chinese \
+            texlive-fonts-recommended \
+            fonts-noto-cjk
+
+      - name: Build PDF
+        run: make pdf
+
+      - name: Get date for release tag
+        id: date
+        run: echo "tag=v$(date +'%Y%m%d-%H%M')" >> $GITHUB_OUTPUT
+
+      - name: Create Release and upload PDF
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.date.outputs.tag }}
+          name: "📖 ${{ steps.date.outputs.tag }}"
+          body: |
+            自动构建版本。对应 commit: ${{ github.sha }}
+
+            下载 PDF 后即可离线阅读全书。
+          files: dist/*.pdf
+          make_latest: true
