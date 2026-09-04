@@ -25,7 +25,7 @@ FDE（Forward Deployed Engineer，前线部署工程师）岗位招聘量在2025
 ## 目录
 
 **Part 1 · 认知篇**
-- [第1章：FDE是什么，不是什么](part1-cognition/01-what-is-fde.md)
+- [第1章：前线，不是前端](part1-cognition/01-what-is-fde.md)
 - [第2章：市场背景——729%增长背后](part1-cognition/02-market-background.md)
 - [第3章：中美FDE——同名不同命](part1-cognition/03-china-vs-silicon-valley.md) ← 本书核心
 

@@ -1,3 +1,107 @@
-# 第1章：FDE是什么，不是什么
+# 前线，不是前端
 
-> 本章内容撰写中...
+> F 是 Forward，从来不是 Front-end。
+
+## 猎头的消息
+
+2025年秋，陈默盯着手机屏幕上一条微信消息发呆。
+
+发消息的是个猎头，头像是商务西装照，消息只有两行：「您好，我们有一个FDE的机会，月薪35-60K，您感兴趣了解一下吗？」
+
+陈默做了五年后端。他的第一反应是：前端？发错人了吧。他做的是Java，不是React。
+
+他把消息折叠起来，准备忽略。
+
+但35-60K这个数字一直在脑子里转。他现在的月薪是25K。
+
+三分钟后，他打开了消息，在搜索框里输入「FDE」。
+
+接下来的一个小时，陈默推翻了自己对这个岗位的三次猜测。
+
+---
+
+## 猜测一：这是前端开发
+
+搜出来的第一条结果是维基百科。
+
+词条开头写着：Forward Deployed Engineer（前线部署工程师），Palantir Technologies 创立的岗位概念，2003年起开始系统化实施。
+
+Forward。前线。跟 Front-end、前端开发，没有任何关系。
+
+陈默有点不好意思——他把这两个词混在一起，只因为它们都有一个「前」字。他把维基百科的截图发给同事，配了一句「我刚搞清楚FDE不是前端开发」。同事回了一个笑脸。
+
+F 是 Forward，意思是「部署到客户的前线」——去客户现场，嵌入他们的团队，在他们的生产环境里写代码，直到系统真正跑起来。位置在客户内部，而不是在自己公司。
+
+这个误解很普遍。招聘网站上搜「FDE」，评论区里每隔几条就有人问：这岗位是做前端的吗？
+
+*来源：[Wikipedia · Forward Deployed Engineer](https://en.wikipedia.org/wiki/Forward_Deployed_Engineer)*
+
+---
+
+## 猜测二：这就是以前的驻场外包
+
+陈默的第二个猜测：那不就是以前那种「派到甲方坐班」的外包吗？
+
+他做过一段时间外包，印象不好。工时到了，项目有没有上线跟自己关系不大。甲方哪天不续约，收拾东西走人就是。代码写得再烂，验收通过了算交差。
+
+但有一句话让他停住了。
+
+Paraform 博客里描述 Palantir 的 FDE 时写道：「if the software works but nobody adopts it, the FDE has failed.」软件能跑，但没人用——这算失败。
+
+外包交付代码，验收通过就结束。FDE 对 adoption 负责——要让人真的用起来，用到能产生业务价值，而且这个责任没有工时边界。
+
+陈默想了想自己做外包的那段经历：有几个系统他亲手写的，上线第一天就没人登录，他当时一点感觉都没有，因为那不是他的事。现在看来，如果按 FDE 的标准，那些项目全算失败。
+
+这个责任感的差距，远不只是合同条款的区别。
+
+*来源：[Paraform · What is a Forward Deployed Engineer?](https://www.paraform.com/blog/forward-deployed-engineer-palantir-runway-greptile)*
+
+---
+
+## 猜测三：这是做演示的售前
+
+第三个猜测：那是拿着 PPT 跑客户、做演示的售前工程师（SA）？
+
+他之前接触过几个售前架构师，每次来演示都用同一套脚本数据，客户问「你们能对接我们自己的数据库吗」，SA 说「当然可以，具体对接我们工程师来做」。
+
+FDE 就是那个「我们工程师」。
+
+但远不止于此。Pragmatic Engineer 的分析里把两个角色放在一起对比：SA 用匿名数据做 POC，证明技术可行、让客户签单——SA 的终点是合同。FDE 的起点才是合同：在客户真实的生产数据上写代码，对系统真正跑起来负责。
+
+SA 做完演示，FDE 才刚开始。
+
+*来源：[Pragmatic Engineer · Forward Deployed Engineers](https://newsletter.pragmaticengineer.com/p/forward-deployed-engineers)*
+
+---
+
+## 四个字说清楚
+
+三个猜测都错了。陈默重新整理：
+
+FDE 做四件事——**嵌入客户现场，写生产级代码，对落地结果负责，把现场发现的问题反哺给产品团队。** 四件事同时做，缺一件，就不是完整意义上的 FDE。
+
+| 维度 | FDE | 售前/SA | 外包 | 顾问 |
+|---|---|---|---|---|
+| 是否写生产代码 | ✅ | ❌（写POC） | ✅ | ❌ |
+| 对客户adoption负责 | ✅ | ❌ | ❌ | ❌ |
+| 工作形式 | 长期嵌入 | 售前阶段 | 项目制 | 咨询期 |
+| 代码所有权 | 客户 | 自家产品 | 客户 | 无 |
+
+这四个角色在市场上经常被混淆。区别在这里：只有 FDE 同时承担「写代码」和「对用起来负责」这两件事。
+
+---
+
+陈默把微信重新打开，找到那条消息。
+
+他回了一句：「可以聊聊。」
+
+---
+
+> 📖 **深度阅读**：
+> - [Wikipedia · Forward Deployed Engineer](https://en.wikipedia.org/wiki/Forward_Deployed_Engineer)
+> - [Paraform · What is a Forward Deployed Engineer?](https://www.paraform.com/blog/forward-deployed-engineer-palantir-runway-greptile)
+> - [Pragmatic Engineer · Forward Deployed Engineers](https://newsletter.pragmaticengineer.com/p/forward-deployed-engineers)
+>
+> 🔖 **下一章**：[第2章——729%增长背后，这个岗位凭什么突然值钱了](02-market-background.md)
+>
+> **关注「AI办公前线」** 获取本章配套公众号文章。
