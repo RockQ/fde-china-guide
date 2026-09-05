@@ -20,6 +20,7 @@ CHAPTERS = \
 
 pdf:
 	mkdir -p dist
+	# 1. 构建内页 PDF
 	pandoc $(CHAPTERS) \
 		--metadata-file=metadata.yaml \
 		--pdf-engine=xelatex \
@@ -27,7 +28,19 @@ pdf:
 		--toc-depth=2 \
 		--number-sections \
 		-V geometry:"margin=2.5cm, top=3cm, bottom=3cm" \
-		-o "dist/$(BOOK_NAME).pdf"
+		-o "dist/_内页.pdf"
+	# 2. 封面 PNG → PDF，再与内页合并
+	python3 -c "\
+from PIL import Image; \
+from pypdf import PdfWriter, PdfReader; \
+img = Image.open('assets/ebook-cover.png').convert('RGB'); \
+img.save('dist/_封面.pdf', 'PDF', resolution=150); \
+w = PdfWriter(); \
+[w.add_page(p) for p in PdfReader('dist/_封面.pdf').pages]; \
+[w.add_page(p) for p in PdfReader('dist/_内页.pdf').pages]; \
+w.write(open('dist/$(BOOK_NAME).pdf', 'wb')); \
+"
+	@rm -f dist/_内页.pdf dist/_封面.pdf
 	@echo "✅ PDF generated: dist/$(BOOK_NAME).pdf"
 
 test-pdf:

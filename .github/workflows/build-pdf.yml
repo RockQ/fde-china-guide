@@ -27,6 +27,7 @@ jobs:
             texlive-lang-chinese \
             texlive-fonts-recommended \
             fonts-noto-cjk
+          pip install --quiet pypdf Pillow
 
       - name: Build PDF
         run: make pdf
