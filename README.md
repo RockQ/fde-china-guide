@@ -25,25 +25,25 @@ FDE（Forward Deployed Engineer，前线部署工程师）岗位招聘量在2025
 ## 目录
 
 **Part 1 · 认知篇**
-- [第1章：前线，不是前端](part1-cognition/01-what-is-fde.md)
-- [第2章：市场背景——729%增长背后](part1-cognition/02-market-background.md)
-- [第3章：中美FDE——同名不同命](part1-cognition/03-china-vs-silicon-valley.md) ← 本书核心
+- [第1章：前线，不是前端](前线，不是前端.md)
+- [第2章：一个被嘲笑了二十年的模式](一个被嘲笑了二十年的模式.md)
+- [第3章：同名，不同命](同名，不同命.md) ← 本书核心
 
 **Part 2 · 中国战场篇**
-- [第4章：国内JD解读——字节 vs 腾讯云 vs 智谱](part2-china-battle/04-domestic-jd-analysis.md)
-- [第5章：国内FDE真实的一天](part2-china-battle/05-real-day-in-china.md)
-- [第6章：中国FDE技能树](part2-china-battle/06-china-skill-tree.md)
-- [第7章：踩坑录](part2-china-battle/07-lessons-from-the-field.md)
+- [第4章：三份JD，三种逻辑](三份JD，三种逻辑.md)
+- [第5章：林浩的一天](林浩的一天.md)
+- [第6章：要干这些，我需要什么技能](要干这些，我需要什么技能.md)
+- [第7章：踩坑录](踩坑录.md)
 
 **Part 3 · 决策行动篇**
-- [第8章：适不适合你](part3-decision-action/08-is-this-for-me.md)
-- [第9章：90天入行路线图](part3-decision-action/09-90-day-roadmap.md)
-- [第10章：出路](part3-decision-action/10-career-outlook.md)
+- [第8章：适不适合你](适不适合你.md)
+- [第9章：90天入行路线图](90天入行路线图.md)
+- [第10章：出路](出路.md)
 
 **附录**
-- [资源地图](appendix/resources.md)
-- [国内JD数据库](appendix/jd-database.md)（持续更新，欢迎PR）
-- [术语表](appendix/glossary.md)
+- [资源地图](资源地图.md)
+- [国内JD数据库](国内JD数据库.md)（持续更新，欢迎PR）
+- [术语表](术语表.md)
 
 ## 下载 PDF
 

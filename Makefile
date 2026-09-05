@@ -4,19 +4,19 @@ BOOK_NAME = 国产FDE修炼之道
 
 CHAPTERS = \
 	assets/cover.md \
-	part1-cognition/01-what-is-fde.md \
-	part1-cognition/02-market-background.md \
-	part1-cognition/03-china-vs-silicon-valley.md \
-	part2-china-battle/04-domestic-jd-analysis.md \
-	part2-china-battle/05-real-day-in-china.md \
-	part2-china-battle/06-china-skill-tree.md \
-	part2-china-battle/07-lessons-from-the-field.md \
-	part3-decision-action/08-is-this-for-me.md \
-	part3-decision-action/09-90-day-roadmap.md \
-	part3-decision-action/10-career-outlook.md \
-	appendix/resources.md \
-	appendix/jd-database.md \
-	appendix/glossary.md
+	前线，不是前端.md \
+	一个被嘲笑了二十年的模式.md \
+	同名，不同命.md \
+	三份JD，三种逻辑.md \
+	林浩的一天.md \
+	要干这些，我需要什么技能.md \
+	踩坑录.md \
+	适不适合你.md \
+	90天入行路线图.md \
+	出路.md \
+	资源地图.md \
+	国内JD数据库.md \
+	术语表.md
 
 pdf:
 	mkdir -p dist
