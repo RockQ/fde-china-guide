@@ -5,9 +5,10 @@ author: "AI办公前线"
 date: "2026"
 lang: zh-CN
 documentclass: ctexbook
-CJKmainfont: "Noto Serif CJK SC"
+classoption: openany
+CJKmainfont: "Noto Sans CJK SC"
 CJKsansfont: "Noto Sans CJK SC"
-mainfont: "Noto Serif CJK SC"
+mainfont: "Noto Sans CJK SC"
 fontsize: 11pt
 geometry: "margin=2.5cm, top=3cm, bottom=3cm"
 toc: true

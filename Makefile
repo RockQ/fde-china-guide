@@ -3,7 +3,6 @@
 BOOK_NAME = 国产FDE修炼之道
 
 CHAPTERS = \
-	assets/cover.md \
 	01-前线，不是前端.md \
 	02-一个被嘲笑了二十年的模式.md \
 	03-同名，不同命.md \
@@ -28,6 +27,7 @@ pdf:
 		--toc-depth=2 \
 		--number-sections \
 		-V geometry:"margin=2.5cm, top=3cm, bottom=3cm" \
+		-V tocdepth=1 \
 		-o "dist/_内页.pdf"
 	# 2. 封面 PNG → PDF，再与内页合并
 	python3 -c "\
