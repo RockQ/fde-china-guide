@@ -12,16 +12,6 @@ FDE（Forward Deployed Engineer，前线部署工程师）岗位招聘量在2025
 
 本书填补这个空白。
 
-## 与其他资源的关系
-
-| 资源 | 定位 | 去那里找 |
-|---|---|---|
-| xdash/FDE-the-Guidance-Book | 客户价值交付方法论（硅谷视角）4.5K⭐ | [GitHub](https://github.com/xdash/FDE-the-Guidance-Book-of-Forward-Deployed-Engineer) |
-| jiji262/fde-guide | AI时代FDE转型实战课（美国JD） | [GitHub](https://github.com/jiji262/fde-guide) |
-| **本书** | **国内战场实况 + 中国工程师转型路径** | 你在这里 |
-
-本书不与以上资源竞争，而是作为**中国语境的补充视角**，在适当位置引用并推荐深度阅读。
-
 ## 目录
 
 **Part 1 · 认知篇**
