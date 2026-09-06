@@ -12,7 +12,7 @@ mainfont: "Noto Sans CJK SC"
 fontsize: 11pt
 geometry: "margin=2.5cm, top=3cm, bottom=3cm"
 toc: true
-toc-depth: 2
+toc-depth: 1
 numbersections: true
 colorlinks: true
 linkcolor: "blue"

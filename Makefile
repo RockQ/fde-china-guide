@@ -24,10 +24,9 @@ pdf:
 		--metadata-file=metadata.yaml \
 		--pdf-engine=xelatex \
 		--toc \
-		--toc-depth=2 \
+		--toc-depth=1 \
 		--number-sections \
 		-V geometry:"margin=2.5cm, top=3cm, bottom=3cm" \
-		-V tocdepth=1 \
 		-o "dist/_body_tmp.pdf"
 	# 2. 封面 PNG → PDF，再与内页合并
 	python3 scripts/merge_pdf.py "$(BOOK_NAME).pdf"
