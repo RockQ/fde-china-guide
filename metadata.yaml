@@ -17,4 +17,10 @@ numbersections: true
 colorlinks: true
 linkcolor: "blue"
 urlcolor: "blue"
+header-includes: |
+  \usepackage{fancyhdr}
+  \pagestyle{fancy}
+  \fancyhf{}
+  \fancyhead[RO,LE]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
 ...
