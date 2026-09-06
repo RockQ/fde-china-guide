@@ -160,4 +160,4 @@ NVIDIA推出的LLM推理优化库，在A100/H100等NVIDIA GPU上能将推理速�
 
 ---
 
-> 🔖 **术语补充**：发现术语缺失或解释有误？在 [GitHub Issues](https://github.com/RockQ/fde-china-guide/issues) 提交反馈。
+> **术语补充**：发现术语缺失或解释有误？在 [GitHub Issues](https://github.com/RockQ/fde-china-guide/issues) 提交反馈。

@@ -113,6 +113,6 @@
 
 ---
 
-> 🔖 **资源更新**：欢迎通过 [GitHub Issues](https://github.com/RockQ/fde-china-guide/issues) 提交新资源或报告失效链接。
+> **资源更新**：欢迎通过 [GitHub Issues](https://github.com/RockQ/fde-china-guide/issues) 提交新资源或报告失效链接。
 
 > **关注「AI办公前线」** 获取资源地图的持续更新版本。
