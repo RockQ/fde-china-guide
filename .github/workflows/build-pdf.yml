@@ -25,9 +25,19 @@ jobs:
             pandoc \
             texlive-xetex \
             texlive-lang-chinese \
+            texlive-latex-extra \
             texlive-fonts-recommended \
+            texlive-fonts-extra \
             fonts-noto-cjk
+          sudo fc-cache -fv
           pip install --quiet pypdf Pillow
+
+      - name: Check environment
+        run: |
+          pandoc --version
+          xelatex --version
+          fc-list | grep -i "Noto Sans CJK" | head -5
+          python3 -c "from pypdf import PdfWriter; from PIL import Image; print('Python deps OK')"
 
       - name: Build PDF
         run: make pdf
