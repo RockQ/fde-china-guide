@@ -101,6 +101,7 @@
 | LangSmith | LLM应用监控和Evals | https://smith.langchain.com |
 | Weights & Biases | 模型训练追踪 | https://wandb.ai |
 | Ollama | 本地模型管理 | https://ollama.ai |
+| RW Consulting PPT | 咨询风格方案PPT Skill，先定结论和证据再出页面，输出整页图片（不可编辑），见第6章「方案表达」 | https://github.com/Pikapika260214/rw-consulting-ppt |
 
 ---
 
