@@ -84,9 +84,9 @@ mkdir -p ~/.codex/skills && cp -R fde-china-guide/skills/relay ~/.codex/skills/r
 
 ### 方式一：让 Agent 自己配（推荐）
 
-进入项目目录，打开 Claude Code 或 Codex，说：
+进入项目目录，在装了 relay 的那个工具里说：
 
-> 在当前项目启用 relay，自动完成初始化和配置检查，让 Claude Code 和 Codex 可以接力。保留我现有的配置。
+> 启用接力
 
 Agent 会按 SKILL.md 里「安装后启用」的步骤执行：检查依赖、初始化目录、把 relay 链接给本机装了的其他工具、增量配置两个工具的钩子（先备份，不覆盖已有配置）、跑体检，最后告诉你还差什么。配完要**重开会话**才生效。
 

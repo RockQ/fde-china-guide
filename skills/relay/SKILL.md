@@ -1,6 +1,6 @@
 ---
 name: relay
-description: 多个 AI 编码工具（Claude Code、Codex、WorkBuddy）之间接力干同一个任务。一个工具额度用完时，另一个工具接着干，进度靠工作目录里的 .relay/HANDOFF.md、.relay/journal.md 和 git 自动存档传递。用户说「接力」「接着干」「继续上次的」「额度用完了」「换 Codex/Claude 继续」「初始化接力」「接力状态」时使用。
+description: 多个 AI 编码工具（Claude Code、Codex、WorkBuddy）之间接力干同一个任务。一个工具额度用完时，另一个工具接着干，进度靠工作目录里的 .relay/HANDOFF.md、.relay/journal.md 和 git 自动存档传递。用户说「启用接力」「启用 relay」「接力」「接着干」「继续上次的」「额度用完了」「换 Codex/Claude 继续」「初始化接力」「接力状态」时使用。
 ---
 
 # relay：跨工具接力
@@ -9,7 +9,7 @@ description: 多个 AI 编码工具（Claude Code、Codex、WorkBuddy）之间�
 
 ## 安装后启用（由 Agent 执行）
 
-用户安装 Skill 后说「在当前项目启用 relay，自动完成初始化和配置检查」，就是请求你执行配置。安装文件本身不会执行命令。不要把下面的命令清单交回用户手动运行。
+用户说「启用接力」或「启用 relay」，就是请求你在当前项目完成下面全部配置。安装文件本身不会执行命令。不要把下面的命令清单交回用户手动运行。
 
 1. 确认当前项目的绝对路径；从本 SKILL.md 所在目录解析 `scripts/`，不要写死作者机器的路径。检查 Git、jq、Python 3 和 `tomllib`；缺依赖时按当前环境和授权安装，无法完成则说明具体缺项。
 2. 读取现有 `.relay/` 和项目规则；运行 `bash <技能目录>/scripts/init.sh <项目目录>`。保留既有交接内容，根据当前任务补全目标、已完成和下一步。该脚本会创建本地 Git 记录，并为图片等二进制添加忽略规则；不会上传远端。它还会把 relay 链接到本机装了的其他工具（Claude Code、Codex、WorkBuddy 中缺的那些），用户只需把 relay 装进其中一个。
