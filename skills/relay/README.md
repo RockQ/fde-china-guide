@@ -66,18 +66,19 @@ Claude Code 的 `Stop` 钩子还多做一件事：这一轮改了文件，HANDOF
 
 ## 安装
 
-把 skill 放到一个公共位置，再链接给各个工具：
+装进 Claude Code 或 Codex 中**任意一个**就行，其他工具在启用时自动补上。
 
 ```bash
-git clone https://github.com/RockQ/fde-china-guide.git
-mkdir -p ~/.agents/skills
-cp -R fde-china-guide/skills/relay ~/.agents/skills/relay
+git clone --depth 1 https://github.com/RockQ/fde-china-guide.git
 
-# 链接给用到的工具（目录不存在就跳过）
-for d in ~/.claude/skills ~/.codex/skills ~/.workbuddy/skills; do
-  [ -d "$(dirname "$d")" ] && mkdir -p "$d" && ln -sfn ~/.agents/skills/relay "$d/relay"
-done
+# 装进 Claude Code
+mkdir -p ~/.claude/skills && cp -R fde-china-guide/skills/relay ~/.claude/skills/relay
+
+# 或者装进 Codex
+mkdir -p ~/.codex/skills && cp -R fde-china-guide/skills/relay ~/.codex/skills/relay
 ```
+
+也可以直接把仓库地址丢给 Claude Code 或 Codex，让它帮你装。
 
 ## 启用
 
@@ -87,14 +88,16 @@ done
 
 > 在当前项目启用 relay，自动完成初始化和配置检查，让 Claude Code 和 Codex 可以接力。保留我现有的配置。
 
-Agent 会按 SKILL.md 里「安装后启用」的步骤执行：检查依赖、初始化目录、增量配置两个工具的钩子（先备份，不覆盖已有配置）、跑体检，最后告诉你还差什么。配完要**重开会话**才生效。
+Agent 会按 SKILL.md 里「安装后启用」的步骤执行：检查依赖、初始化目录、把 relay 链接给本机装了的其他工具、增量配置两个工具的钩子（先备份，不覆盖已有配置）、跑体检，最后告诉你还差什么。配完要**重开会话**才生效。
 
 ### 方式二：手动配
+
+下面的命令以装在 `~/.claude/skills/relay` 为例，装在别处就换成实际路径。
 
 **1. 初始化项目目录**
 
 ```bash
-bash ~/.agents/skills/relay/scripts/init.sh /path/to/your/project
+bash ~/.claude/skills/relay/scripts/init.sh /path/to/your/project
 ```
 
 它会：
@@ -102,6 +105,7 @@ bash ~/.agents/skills/relay/scripts/init.sh /path/to/your/project
 - 目录还不是 git 仓库时执行 `git init`，并提交一次
 - 往 `.gitignore` 追加图片、视频、PDF、Office 文件等二进制的忽略规则（这些文件不会进自动存档）
 - 往 `AGENTS.md` 追加接力协议，Codex 和 WorkBuddy 靠这段规则开工时报告状态
+- 检查本机装了哪些工具（`~/.claude`、`~/.codex`、`~/.workbuddy`），缺 relay 的就链接过去
 - 生成 `.relay/skills.txt` 和 `.relay/writable.txt`，最后跑一次体检
 
 **2. 配置 Claude Code 钩子**
@@ -112,10 +116,10 @@ bash ~/.agents/skills/relay/scripts/init.sh /path/to/your/project
 {
   "hooks": {
     "SessionStart": [
-      { "hooks": [ { "type": "command", "command": "bash ~/.agents/skills/relay/scripts/session_start.sh" } ] }
+      { "hooks": [ { "type": "command", "command": "bash ~/.claude/skills/relay/scripts/session_start.sh" } ] }
     ],
     "Stop": [
-      { "hooks": [ { "type": "command", "command": "bash ~/.agents/skills/relay/scripts/claude_stop.sh" } ] }
+      { "hooks": [ { "type": "command", "command": "bash ~/.claude/skills/relay/scripts/claude_stop.sh" } ] }
     ]
   }
 }
@@ -128,7 +132,7 @@ bash ~/.agents/skills/relay/scripts/init.sh /path/to/your/project
 在 `~/.codex/config.toml` 顶部加入（写绝对路径）：
 
 ```toml
-notify = ["/Users/<你的用户名>/.agents/skills/relay/scripts/codex_notify.sh"]
+notify = ["/Users/<你的用户名>/.claude/skills/relay/scripts/codex_notify.sh"]
 ```
 
 Codex 只允许一个 `notify`。原来已经配了别的通知命令的，把原命令放进环境变量，`codex_notify.sh` 会先转发给它，再存档：
@@ -142,7 +146,7 @@ export RELAY_CODEX_NOTIFY_FORWARD="/path/to/your/old-notify"
 **4. 体检**
 
 ```bash
-bash ~/.agents/skills/relay/scripts/doctor.sh /path/to/your/project
+bash ~/.claude/skills/relay/scripts/doctor.sh /path/to/your/project
 ```
 
 检查 git、jq、两个工具的钩子、skill 对齐和 Codex 权限。加 `--fix` 自动修复 skill 对齐和 Codex 权限，见下文「可选配置」。
@@ -158,7 +162,7 @@ bash ~/.agents/skills/relay/scripts/doctor.sh /path/to/your/project
 查看接力统计：
 
 ```bash
-bash ~/.agents/skills/relay/scripts/status.sh
+bash ~/.claude/skills/relay/scripts/status.sh
 ```
 
 输出最近干活的工具、HANDOFF 大小、各工具轮次，以及更新交接大约花了多少 token（粗估）。
@@ -184,7 +188,7 @@ bash ~/.agents/skills/relay/scripts/status.sh
 ## 卸载
 
 1. 从 `~/.claude/settings.json` 删掉两个 relay 钩子，从 `~/.codex/config.toml` 删掉 `notify` 行（有原通知命令的，改回原命令）
-2. 删掉各工具 skills 目录下的 `relay` 链接和 `~/.agents/skills/relay`
+2. 删掉各工具 skills 目录下的 `relay`（安装的那份是目录，启用时补上的是链接）
 3. 项目里的 `.relay/` 目录、`AGENTS.md` 里的「接力协议（relay）」一节可以留作记录，也可以删掉
 
 ## 文件结构

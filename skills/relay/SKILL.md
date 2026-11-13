@@ -12,7 +12,7 @@ description: 多个 AI 编码工具（Claude Code、Codex、WorkBuddy）之间�
 用户安装 Skill 后说「在当前项目启用 relay，自动完成初始化和配置检查」，就是请求你执行配置。安装文件本身不会执行命令。不要把下面的命令清单交回用户手动运行。
 
 1. 确认当前项目的绝对路径；从本 SKILL.md 所在目录解析 `scripts/`，不要写死作者机器的路径。检查 Git、jq、Python 3 和 `tomllib`；缺依赖时按当前环境和授权安装，无法完成则说明具体缺项。
-2. 读取现有 `.relay/` 和项目规则；运行 `bash <技能目录>/scripts/init.sh <项目目录>`。保留既有交接内容，根据当前任务补全目标、已完成和下一步。该脚本会创建本地 Git 记录，并为图片等二进制添加忽略规则；不会上传远端。
+2. 读取现有 `.relay/` 和项目规则；运行 `bash <技能目录>/scripts/init.sh <项目目录>`。保留既有交接内容，根据当前任务补全目标、已完成和下一步。该脚本会创建本地 Git 记录，并为图片等二进制添加忽略规则；不会上传远端。它还会把 relay 链接到本机装了的其他工具（Claude Code、Codex、WorkBuddy 中缺的那些），用户只需把 relay 装进其中一个。
 3. 检查实际已安装的客户端与钩子。缺失时先备份配置，再增量配置：Claude Code 的 `SessionStart` 调用 `session_start.sh`，`Stop` 调用 `claude_stop.sh`；Codex 的 `notify` 调用 `codex_notify.sh`。保留已有钩子和通知行为，不覆盖整份配置。Codex 原来已有 notify 命令时，不要覆盖：把原命令写进环境变量 `RELAY_CODEX_NOTIFY_FORWARD`，`codex_notify.sh` 会先转发给它再存档。若当前客户端不支持对应钩子，明确采用手动维护交接文件的方式，不声称自动存档已接通。
 4. 将本项目实际使用的 Skill 写进 `.relay/skills.txt`，检查并补齐目标客户端缺失的链接；将确实需要写入的项目外目录写进 `.relay/writable.txt`。`doctor.sh --fix` 会改变 Codex 全局联网和目录权限，仅在任务确有需要且已有授权时使用；纯本地接力无需联网，可只修复缺失链接。保留已有的更严格限制，不为通过检查扩大权限。
 5. 运行 `bash <技能目录>/scripts/doctor.sh <项目目录>`，逐项处理检查结果，再验证配置可解析、脚本路径存在。当前脚本的检查不能代替真实钩子触发验证；首次正常任务结束后再从日志和 Git 确认。不要为测试伪造用户消息或提交。
@@ -55,9 +55,9 @@ Claude Code 由 SessionStart 钩子自动注入以上内容；Codex 和 WorkBudd
 
 ## 命令
 
-`<技能目录>` 指本 SKILL.md 所在目录，常见位置是 `~/.agents/skills/relay`。
+`<技能目录>` 指本 SKILL.md 所在目录，常见位置是 `~/.claude/skills/relay` 或 `~/.codex/skills/relay`。
 
-- 初始化一个目录：`bash <技能目录>/scripts/init.sh <目录>`
+- 初始化一个目录：`bash <技能目录>/scripts/init.sh <目录>`（顺带把 relay 链接给本机其他工具）
 - 体检前提条件：`bash <技能目录>/scripts/doctor.sh`；自动修复 skill 对齐和 Codex 权限：加 `--fix`
   - `.relay/skills.txt`：本项目要用的 skill，每行一个，修复时从 Claude 链接到 Codex 和 WorkBuddy
   - `.relay/writable.txt`：项目外 Codex 需要写的目录，修复时加进 Codex 可写目录，并打开联网（全局设置，改前自动备份）

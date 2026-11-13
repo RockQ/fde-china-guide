@@ -1,7 +1,7 @@
 #!/bin/bash
 # 在一个目录启用接力：git、.relay 文件、AGENTS.md 协议。
 DIR="${1:-$PWD}"; cd "$DIR" || exit 1
-SK="$(cd "$(dirname "$0")/.." && pwd)"
+SK="$(cd "$(dirname "$0")/.." && pwd -P)"
 mkdir -p .relay
 [ -f .relay/HANDOFF.md ] || cp "$SK/templates/HANDOFF.md" .relay/HANDOFF.md
 [ -f .relay/journal.md ] || echo "# 接力流水账（最近 30 条，更早的在 journal-archive.md）" > .relay/journal.md
@@ -51,6 +51,13 @@ A
 fi
 git add -A >/dev/null 2>&1; git commit -q --no-verify -m "relay: init" >/dev/null 2>&1
 echo "已在 $DIR 启用接力"
+# 把 relay 自己链接给本机装了的其他工具（只装进一个工具就够了）
+for home in ~/.claude ~/.codex ~/.workbuddy; do
+  [ -d "$home" ] || continue
+  t="$home/skills/relay"
+  [ -e "$t" ] && continue
+  mkdir -p "$home/skills" && ln -s "$SK" "$t" && echo "  + 已把 relay 链接到 $t"
+done
 [ -f .relay/skills.txt ] || printf "# 本项目会用到的 skill，每行一个；doctor.sh --fix 会同步到 Codex 和 WorkBuddy\nrelay\n" > .relay/skills.txt
 [ -f .relay/writable.txt ] || printf "# 项目目录外、Codex 需要写入的目录，每行一个\n" > .relay/writable.txt
 bash "$SK/scripts/doctor.sh" "$DIR"
