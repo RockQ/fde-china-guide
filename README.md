@@ -39,6 +39,12 @@ FDE（Forward Deployed Engineer，前线部署工程师）岗位招聘量在2025
 
 → [点击下载最新 PDF 版本](https://github.com/RockQ/fde-china-guide/releases/latest)（内容完善后自动构建）
 
+## 配套 Skills
+
+书里讲的前线工作方法，有一部分做成了 AI 工具的 skill，放在 [skills/](skills/) 目录：
+
+- [relay](skills/relay/)：Claude Code、Codex、WorkBuddy 之间接力干同一个活，额度用完换工具不丢进度
+
 ## 关于
 
 本书由「AI办公前线」公众号出品。关注公众号获取每章配套文章与最新资讯。
